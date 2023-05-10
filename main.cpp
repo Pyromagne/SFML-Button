@@ -2,9 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include "sfml_button.hpp"
 
-
-void callButton(sf::RenderWindow &app);
-
 sf::Font jackInput;
 
 int main()
@@ -17,19 +14,6 @@ int main()
     sf::Texture buttonTexture;
     buttonTexture.loadFromFile("assets/button.png");
 
-    callButton(app);
-    callButton(app);
-
-
-
-
-
-    return EXIT_SUCCESS;
-}
-
-
-void callButton(sf::RenderWindow &app)
-{
     RectButton button1(sf::Vector2f(100, 50), sf::Vector2f(50, 50));
     //button1.button.setTexture(&buttonTexture);
     button1.setButtonFont(jackInput);
@@ -47,29 +31,19 @@ void callButton(sf::RenderWindow &app)
     button4.setButtonFont(jackInput);
     button4.setButtonLable("Continue",sf::Color::Black, 30);
 
-
     while (app.isOpen())
     {
         // Process events
         sf::Event eventMain;
         while (app.pollEvent(eventMain))
         {
-            // Close window : exit
-            if(eventMain.type == sf::Event::KeyPressed)
-            {
-                if(eventMain.key.code == sf::Keyboard::Z)
-                {
-                    std::cout<<'Z'<<std::endl;
-                    return;
-                }
-            }
 
             button1.getButtonStatus(app, eventMain);
             button2.getButtonStatus(app, eventMain);
             button3.getButtonStatus(app, eventMain);
             button4.getButtonStatus(app, eventMain);
 
-
+            // Close window : exit
             if (eventMain.type == sf::Event::Closed)
             {
                 app.close();
@@ -97,7 +71,6 @@ void callButton(sf::RenderWindow &app)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             std::cout<<'A'<<std::endl;
-
         }
 
         app.clear(sf::Color( 16, 8, 59, 255) );
@@ -109,4 +82,6 @@ void callButton(sf::RenderWindow &app)
         // Update the window
         app.display();
     }
+
+    return EXIT_SUCCESS;
 }
