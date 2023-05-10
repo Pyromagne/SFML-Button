@@ -2,7 +2,7 @@
 bin/
 obj/
 *.dll
-*.cbd
+*.cbp
 *.depend
 *.layout
 
