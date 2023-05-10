@@ -29,7 +29,7 @@ class Button
     bool isHover = false;
     bool isPressed = false;
     bool autoSize = false;
-    bool enabled = true; //not implemented yet, for the button state if the button can be pressed by the user
+    bool isActive = true; //work in progress
 
     protected:
     sf::Text buttonLabel;
@@ -86,9 +86,10 @@ class EllipseButton: public Button
     void getButtonStatus(sf::RenderWindow&, sf::Event&);
     void draw(sf::RenderWindow&);
 
-    sf::CircleShape button;
 
     private:
+    
+    sf::CircleShape button;
 };
 
 

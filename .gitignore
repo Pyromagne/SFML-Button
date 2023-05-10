@@ -1,0 +1,8 @@
+.vscode/
+bin/
+obj/
+*.dll
+*.cbd
+*.depend
+*.layout
+
