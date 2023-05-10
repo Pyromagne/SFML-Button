@@ -8,6 +8,7 @@ int main()
 {
     // Create the main window
 
+
     sf::RenderWindow app(sf::VideoMode(960, 600), "IDLE: Fishing");
     jackInput.loadFromFile("assets/JackInput.TTF");
 
@@ -25,6 +26,8 @@ int main()
     button2.setButtonLable("Play",sf::Color::Black, 30);
 
     EllipseButton button3(30,sf::Vector2f(50, 250));
+    button3.setButtonFont(jackInput);
+    button3.setButtonLable("X",sf::Color::Black, 30);
 
     RectButton button4(true,sf::Vector2f(50, 350));
     //button4.button.setTexture(&buttonTexture);
@@ -70,7 +73,7 @@ int main()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            std::cout<<'A'<<std::endl;
+            std::cout<<"Button Count: " << Button::count <<std::endl;
         }
 
         app.clear(sf::Color( 16, 8, 59, 255) );
