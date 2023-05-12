@@ -51,8 +51,8 @@ The `EllipseButton` class is a derived class of `Button` that provides a ellipti
 
 The `EllipseButton` class also provides the following member variables:
 
-- `button`: representing the circular shape of the button.
-- `buttonRect`: representing the rectangle bounding of the button.
+- `button`:an `sf::CircleShape` representing the circular shape of the button.
+- `buttonRect`: an `sf::FloatRect` representing the rectangle bounding of the button.
 
 ## Example Usage
 
