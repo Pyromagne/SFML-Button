@@ -32,9 +32,9 @@ The `Button` class also provides the following member variables:
 
 The `RectButton` class is a derived class of `Button` that provides a rectangular button implementation. It provides the following methods:
 
-- `RectButton(const sf::Vector2f)`: constructs a rectangular button with the given size.
-- `RectButton(const sf::Vector2f, const sf::Vector2f)`: constructs a rectangular button with the given size and position.
-- `RectButton(const sf::Vector2f, bool autoSize)`: constructs a rectangular button with the given size, and optionally automatically sizes the button to fit its label.
+- `RectButton(const sf::Vector2f)`: constructs a rectangular button object with the given size.
+- `RectButton(const sf::Vector2f, const sf::Vector2f)`: constructs a rectangular button object with the given size and position.
+- `RectButton(const sf::Vector2f, bool autoSize)`: constructs a rectangular button object with the given position, and optionally automatically sizes the button to fit its label.
 
 The `RectButton` class also provides the following member variables:
 
@@ -45,9 +45,9 @@ The `RectButton` class also provides the following member variables:
 
 The `EllipseButton` class is a derived class of `Button` that provides a elliptical button implementation. It provides the following methods:
 
-- `EllipseButton(float radius)`: construct an EllipseButton object with the given radius.
-- `EllipseButton(float radius, const sf::Vector2f)`: construct an EllipseButton object with the given radius and position.
-- `EllipseButton(const sf::Vector2f, bool autoSize)`: construct an EllipseButton object with the given position and autoSize property.
+- `EllipseButton(float radius)`: construct a circular button object with the given radius.
+- `EllipseButton(float radius, const sf::Vector2f)`: construct a circular button object with the given radius and position.
+- `EllipseButton(const sf::Vector2f, bool autoSize)`: construct a circular button object with the given position, and optionally automatically sizes the button to fit its label.
 
 The `EllipseButton` class also provides the following member variables:
 
