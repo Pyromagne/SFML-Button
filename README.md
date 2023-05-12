@@ -45,9 +45,9 @@ The `RectButton` class also provides the following member variables:
 
 The `EllipseButton` class is a derived class of `Button` that provides a elliptical button implementation. It provides the following methods:
 
-`EllipseButton(float radius)`: construct an EllipseButton object with the given radius.
-`EllipseButton(float radius, const sf::Vector2f)`: construct an EllipseButton object with the given radius and position.
-`EllipseButton(const sf::Vector2f, bool autoSize)`: construct an EllipseButton object with the given position and autoSize property.
+- `EllipseButton(float radius)`: construct an EllipseButton object with the given radius.
+- `EllipseButton(float radius, const sf::Vector2f)`: construct an EllipseButton object with the given radius and position.
+- `EllipseButton(const sf::Vector2f, bool autoSize)`: construct an EllipseButton object with the given position and autoSize property.
 
 The `EllipseButton` class also provides the following member variables:
 
