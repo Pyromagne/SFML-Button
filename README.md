@@ -2,58 +2,57 @@
 
 The SFML Button Library is a C++ library built using the SFML Graphics Library. It is designed to help developers create interactive and customizable button elements for their SFML-based projects. The library provides two button classes: RectButton and EllipseButton.
 
-## Button Class
+## API Documentation
 
-The `Button` class is the base class for both rectangular and circular buttons. It defines the common properties and functions that the buttons share. The class has the following public functions:
+The library provides a `Button` base class and a `RectButton` derived class:
 
-- `void getButtonStatus(sf::RenderWindow&, sf::Event&)`: This function updates the status of the button based on the mouse events.
-- `void draw(sf::RenderWindow&)`: This function draws the button on the screen.
-- `void setButtonLable(std::string, const sf::Color&, float)`: This function sets the label of the button, the text color, and the character size.
-- `void setButtonFont(sf::Font&)`: This function sets the font of the button.
+### `Button`
 
-The class also has the following public properties:
+The `Button` class is a pure virtual class that defines the interface for all buttons in the library. It provides the following pure virtual methods:
 
-- `bool isHover`: This property is true if the mouse is hovering over the button.
-- `bool isPressed`: This property is true if the button is pressed.
-- `bool autoSize`: This property is true if the button should be automatically resized based on the label size.
-- `bool enabled`: This property is true if the button can be pressed by the user.
+- `getButtonStatus(sf::RenderWindow&, sf::Event&)`: gets the current status of the button (hovered, pressed, etc.) based on user interaction with the button.
+- `draw(sf::RenderWindow&)`: draws the button on a given window.
+- `setButtonFont(sf::Font&)`: sets the font of the button label.
+- `setButtonLable(std::string, const sf::Color&, float)`: sets the text, color, and size of the button label.
 
-## RectButton
+The `Button` class also provides the following member variables:
 
-The RectButton class is a subclass of the Button class, which provides the base functionality for the button. The RectButton class allows you to create rectangular buttons with customizable size and position. The class provides methods for detecting the button's status (i.e., whether it is hovered over or pressed), drawing the button to the screen, and setting the button's label and font.
+- `isHover`: a boolean indicating whether the button is currently being hovered over by the user.
+- `isPressed`: a boolean indicating whether the button is currently being pressed by the user.
+- `isActive`: a boolean indicating whether the button is currently active or not.
+- `autoSize`: a boolean indicating whether the button should automatically resize to fit its label.
+- `buttonLabel`: an `sf::Text` object representing the label of the button.
+- `mousePosWindow`: an `sf::Vector2i` representing the current position of the mouse on the window.
+- `mousePosView`: an `sf::Vector2f` representing the current position of the mouse on the view.
+- `buttonPos`: an `sf::Vector2f` representing the position of the button.
+- `labelRect`: an `sf::FloatRect` representing the rectangle bounding the button label.
+- `label`: a string representing the text of the button label.
 
-The `RectButton` class is a rectangular button that inherits from the `Button` class. It has the following constructors:
+### `RectButton`
 
-- `RectButton(const sf::Vector2f)`: This constructor creates a button with a specified size.
-- `RectButton(const sf::Vector2f, const sf::Vector2f)`: This constructor creates a button with a specified size and position.
-- `RectButton(bool autoSize, const sf::Vector2f)`: This constructor creates a button with a specified position and an auto-size option.
+The `RectButton` class is a derived class of `Button` that provides a rectangular button implementation. It provides the following methods:
 
-The class also has the following public function:
+- `RectButton(const sf::Vector2f)`: constructs a rectangular button with the given size.
+- `RectButton(const sf::Vector2f, const sf::Vector2f)`: constructs a rectangular button with the given size and position.
+- `RectButton(const sf::Vector2f, bool autoSize)`: constructs a rectangular button with the given size, and optionally automatically sizes the button to fit its label.
 
-- `void getButtonStatus(sf::RenderWindow&, sf::Event&)`: This function updates the status of the button based on the mouse events.
-- `void draw(sf::RenderWindow&)`: This function draws the button on the screen.
-- `void setButtonLable(std::string, const sf::Color&, float)`: This function sets the label of the button, the text color, and the character size.
-- `void setButtonFont(sf::Font&)`: This function sets the font of the button.
+The `RectButton` class also provides the following member variables:
 
-## EllipseButton
+- `button`: an `sf::RectangleShape` representing the rectangular shape of the button.
+- `buttonRect`: an `sf::FloatRect` representing the rectangle bounding of the button.
 
-The EllipseButton class is another subclass of the Button class. This class allows you to create circular buttons with customizable size and position. The class provides methods for detecting the button's status and drawing the button to the screen.
+### `EllipseButton`
 
-The `EllipseButton` class is a circular button that inherits from the `Button` class. It has the following constructors:
+The `EllipseButton` class is a derived class of `Button` that provides a elliptical button implementation. It provides the following methods:
 
-- `EllipseButton(float radius)`: This constructor creates a button with a specified radius.
-- `EllipseButton(float radius, const sf::Vector2f)`: This constructor creates a button with a specified radius and position.
+`EllipseButton(float radius)`: construct an EllipseButton object with the given radius.
+`EllipseButton(float radius, const sf::Vector2f)`: construct an EllipseButton object with the given radius and position.
+`EllipseButton(const sf::Vector2f, bool autoSize)`: construct an EllipseButton object with the given position and autoSize property.
 
-The class also has the following public function:
+The `EllipseButton` class also provides the following member variables:
 
-- `void getButtonStatus(sf::RenderWindow&, sf::Event&)`: This function updates the status of the button based on the mouse events.
-- `void draw(sf::RenderWindow&)`: This function draws the button on the screen.
-
-The class also has the following public properties:
-
-- `sf::CircleShape button`: This property is the circle shape of the button.
-
-Sure, here's an example usage of the `RectButton` class:
+- `button`: representing the circular shape of the button.
+- `buttonRect`: representing the rectangle bounding of the button.
 
 ## Example Usage
 
@@ -93,9 +92,6 @@ int main()
     return 0;
 }
 ```
+
 ### Limitations
-The current implementation of the library has a few limitations. For example, the library does not implement the `enabled` feature, which allows the developer to disable the button and prevent it from being pressed by the user. Also, the `autoSize` feature does not work properly and needs to be fixed.
-
-Like the RectButton class, the EllipseButton class has the same limitations. The library does not implement the `enabled` feature, and the `autoSize` feature needs to be fixed.
-
-Overall, the SFML Button Library is a useful tool for developers looking to create customizable button elements for their SFML projects. However, it is still a work in progress, and the developers need to fix some of the limitations before it can be considered a complete library.
+SFML Button Library is a useful tool for developers looking to create customizable button elements for their SFML projects. However, it is still a work in progress, and the developers need to fix some of the limitations before it can be considered a complete library.
