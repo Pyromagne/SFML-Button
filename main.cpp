@@ -29,10 +29,14 @@ int main()
     button3.setButtonFont(jackInput);
     button3.setButtonLable("X",sf::Color::Black, 30);
 
-    RectButton button4(true,sf::Vector2f(50, 350));
+    RectButton button4(sf::Vector2f(50, 350), true);
     //button4.button.setTexture(&buttonTexture);
     button4.setButtonFont(jackInput);
     button4.setButtonLable("Continue",sf::Color::Black, 30);
+
+    EllipseButton button5(sf::Vector2f(50, 450),true);
+    button5.setButtonFont(jackInput);
+    button5.setButtonLable("WOLOLO",sf::Color::Black, 30);
 
     while (app.isOpen())
     {
@@ -45,6 +49,7 @@ int main()
             button2.getButtonStatus(app, eventMain);
             button3.getButtonStatus(app, eventMain);
             button4.getButtonStatus(app, eventMain);
+            button5.getButtonStatus(app, eventMain);
 
             // Close window : exit
             if (eventMain.type == sf::Event::Closed)
@@ -68,6 +73,10 @@ int main()
             {
                 std::cout<<"Button 4 is pressed"<<std::endl;
             }
+            if (button5.isPressed)
+            {
+                std::cout<<"Button 5 is pressed"<<std::endl;
+            }
 
         }
 
@@ -81,6 +90,7 @@ int main()
         button2.draw(app);
         button3.draw(app);
         button4.draw(app);
+        button5.draw(app);
 
         // Update the window
         app.display();

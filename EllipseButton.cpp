@@ -29,6 +29,17 @@ EllipseButton::EllipseButton(float radius = 0, const sf::Vector2f position = sf:
 
 ////////////////////////////////////////////////////////////
 
+EllipseButton::EllipseButton(const sf::Vector2f position = sf::Vector2f(0, 0), bool autoSize = false)
+{   //Constructor
+    count++;
+    std::cout<<"Button Contructor Called"<<std::endl;
+    this-> autoSize = autoSize;
+    this->button.setPosition(position);
+    this->buttonPos = position;
+}
+
+////////////////////////////////////////////////////////////
+
 EllipseButton::~EllipseButton()
 {   //Deconstructor
     count--;
@@ -97,10 +108,27 @@ void EllipseButton::setButtonLable(std::string label, const sf::Color& color, fl
 
 
     this->labelRect = this->buttonLabel.getLocalBounds();
-    this->buttonLabel.setOrigin(this->labelRect.width/2.0f,
-                                    this->labelRect.height/2.0f);
 
-    this->buttonLabel.setPosition(this->buttonPos.x + (this->buttonRect.width / 2.0f),
-                                  this->buttonPos.y + (this->buttonRect.height / 3.0f));
+    if(autoSize)
+    {   
+        button.setRadius(labelRect.width / 1.5f);
+
+        this->buttonRect = this->button.getLocalBounds();
+
+        this->buttonLabel.setOrigin(this->labelRect.width/2.0f,
+                                        this->labelRect.height/2.0f);
+
+        this->buttonLabel.setPosition(this->buttonPos.x + (this->buttonRect.width / 2.0f),
+                                    this->buttonPos.y + (this->buttonRect.height / 2.5f));
+    }
+    else
+    {
+        this->buttonLabel.setOrigin(this->labelRect.width/2.0f,
+                                        this->labelRect.height/2.0f);
+
+        this->buttonLabel.setPosition(this->buttonPos.x + (this->buttonRect.width / 2.0f),
+                                    this->buttonPos.y + (this->buttonRect.height / 3.0f));
+    }
+    
 }
 

@@ -29,11 +29,11 @@ class Button
 
     bool isHover = false;
     bool isPressed = false;
-    bool autoSize = false;
     bool isActive = true;
     static unsigned int count;
 
     protected:
+    bool autoSize = false;
     sf::Text buttonLabel;
     sf::Vector2i mousePosWindow;
     sf::Vector2f mousePosView;
@@ -54,7 +54,7 @@ class RectButton: public Button
 
     RectButton(const sf::Vector2f);
     RectButton(const sf::Vector2f, const sf::Vector2f);
-    RectButton(bool autoSize, const sf::Vector2f);
+    RectButton(const sf::Vector2f, bool autoSize);
 
     ~RectButton();
 
@@ -65,7 +65,6 @@ class RectButton: public Button
     sf::RectangleShape button;
 
     private:
-
     sf::FloatRect buttonRect;
 };
 
@@ -81,6 +80,7 @@ class EllipseButton: public Button
 
     EllipseButton(float radius);
     EllipseButton(float radius, const sf::Vector2f);
+    EllipseButton(const sf::Vector2f, bool autoSize);
 
     ~EllipseButton();
 
@@ -91,7 +91,6 @@ class EllipseButton: public Button
     sf::CircleShape button;
 
     private:
-
     sf::FloatRect buttonRect;
 };
 

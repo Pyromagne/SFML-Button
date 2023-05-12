@@ -29,7 +29,7 @@ RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0), const sf::V
 
 ////////////////////////////////////////////////////////////
 
-RectButton::RectButton(bool autoSize, const sf::Vector2f position = sf::Vector2f(0, 0))
+RectButton::RectButton(const sf::Vector2f position = sf::Vector2f(0, 0), bool autoSize = false)
 {   //Constructor
     count++;
     std::cout<<"Button Contructor Called"<<std::endl;
@@ -109,7 +109,7 @@ void RectButton::setButtonLable(std::string label, const sf::Color& color, float
 
     this->labelRect = this->buttonLabel.getLocalBounds();
 
-    if(autoSize == true)
+    if(autoSize)
     {
         sf::Vector2f autoRectSize = sf::Vector2f(labelRect.width + (2.5f * (labelRect.width/10)),
                                                  labelRect.height + (10.f * (labelRect.height/10)));
