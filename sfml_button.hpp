@@ -8,6 +8,7 @@
 #ifndef BUTTON_HPP_INCLUDED
 #define BUTTON_HPP_INCLUDED
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 const sf::Color defaultHovered = sf::Color(191, 191, 191);
 const sf::Color defaultPressed = sf::Color(153, 153, 153);
@@ -23,15 +24,16 @@ class Button
     public:
     virtual void getButtonStatus(sf::RenderWindow&, sf::Event&) = 0;
     virtual void draw(sf::RenderWindow&) = 0;
-    //virtual void setButtonLable(std::string, float) = 0;
-    //virtual void setButtonFont(sf::Font&) = 0;
+    virtual void setButtonFont(sf::Font&);
+    virtual void setButtonLable(std::string, const sf::Color&, float) = 0;
 
     bool isHover = false;
     bool isPressed = false;
-    bool autoSize = false;
-    bool isActive = true; //work in progress
+    bool isActive = true;
+    static unsigned int count;
 
     protected:
+    bool autoSize = false;
     sf::Text buttonLabel;
     sf::Vector2i mousePosWindow;
     sf::Vector2f mousePosView;
@@ -52,19 +54,17 @@ class RectButton: public Button
 
     RectButton(const sf::Vector2f);
     RectButton(const sf::Vector2f, const sf::Vector2f);
-    RectButton(bool autoSize, const sf::Vector2f);
+    RectButton(const sf::Vector2f, bool autoSize);
 
     ~RectButton();
 
     void getButtonStatus(sf::RenderWindow&, sf::Event&);
     void draw(sf::RenderWindow&);
     void setButtonLable(std::string, const sf::Color&, float);
-    void setButtonFont(sf::Font&);
 
     sf::RectangleShape button;
 
     private:
-
     sf::FloatRect buttonRect;
 };
 
@@ -80,16 +80,18 @@ class EllipseButton: public Button
 
     EllipseButton(float radius);
     EllipseButton(float radius, const sf::Vector2f);
+    EllipseButton(const sf::Vector2f, bool autoSize);
 
     ~EllipseButton();
 
     void getButtonStatus(sf::RenderWindow&, sf::Event&);
     void draw(sf::RenderWindow&);
+    void setButtonLable(std::string, const sf::Color&, float);
 
+    sf::CircleShape button;
 
     private:
-    
-    sf::CircleShape button;
+    sf::FloatRect buttonRect;
 };
 
 
