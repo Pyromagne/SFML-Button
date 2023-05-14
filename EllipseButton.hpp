@@ -21,13 +21,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 ////////////////////////////////////////////////////////////
-#ifndef SFML_BUTTON_HPP_INCLUDED
-#define SFML_BUTTON_HPP_INCLUDED
+#ifndef ELLIPSEBUTTON_HPP_INCLUDED
+#define ELLIPSEBUTTON_HPP_INCLUDED
 ////////////////////////////////////////////////////////////
 // HEADERS
 ////////////////////////////////////////////////////////////
-#include "button.hpp"
-#include "RectButton.hpp"
-#include "EllipseButton.hpp"
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Button.hpp"
+////////////////////////////////////////////////////////////
+///
+/// @brief Make a Elliptical button
+///
+////////////////////////////////////////////////////////////
 
-#endif // SFML_BUTTON_HPP_INCLUDED
+
+
+class EllipseButton: public Button
+{
+    public:
+    EllipseButton(float radius);
+    EllipseButton(float radius, const sf::Vector2f);
+    EllipseButton(const sf::Vector2f, bool autoSize);
+
+    ~EllipseButton();
+
+    void getButtonStatus(sf::RenderWindow&, sf::Event&);
+    void draw(sf::RenderWindow&);
+    void setButtonLable(std::string, const sf::Color&, float);
+
+    sf::CircleShape button;
+
+    private:
+    sf::FloatRect buttonRect;
+};
+
+#endif // ELLIPSEBUTTON_HPP_INCLUDED

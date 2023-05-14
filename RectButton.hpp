@@ -21,13 +21,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 ////////////////////////////////////////////////////////////
-#ifndef SFML_BUTTON_HPP_INCLUDED
-#define SFML_BUTTON_HPP_INCLUDED
+#ifndef RECTBUTTON_HPP_INCLUDED
+#define RECTBUTTON_HPP_INCLUDED
 ////////////////////////////////////////////////////////////
 // HEADERS
 ////////////////////////////////////////////////////////////
-#include "button.hpp"
-#include "RectButton.hpp"
-#include "EllipseButton.hpp"
+#include <SFML/Graphics.hpp>
+#include <iostream>
+////////////////////////////////////////////////////////////
+///
+/// @brief make a rectangle button
+///
+////////////////////////////////////////////////////////////
 
-#endif // SFML_BUTTON_HPP_INCLUDED
+class RectButton: public Button
+{
+    public:
+
+    RectButton(const sf::Vector2f);
+    RectButton(const sf::Vector2f, const sf::Vector2f);
+    RectButton(const sf::Vector2f, bool autoSize);
+
+    ~RectButton();
+
+    void getButtonStatus(sf::RenderWindow&, sf::Event&);
+    void draw(sf::RenderWindow&);
+    void setButtonLable(std::string, const sf::Color&, float);
+
+    sf::RectangleShape button;
+
+    private:
+    sf::FloatRect buttonRect;
+};
+
+#endif // RECTBUTTON_HPP_INCLUDED

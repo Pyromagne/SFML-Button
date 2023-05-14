@@ -1,4 +1,5 @@
-#include "sfml_button.hpp"
+#include "Button.hpp"
+#include "RectButton.hpp"
 
 ////////////////////////////////////////////////////////////
 ///
@@ -13,6 +14,7 @@ RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0))
     std::cout<<"Button Contructor Called"<<std::endl;
     this->button.setSize(size);
     this->buttonRect = this->button.getLocalBounds();
+    this->button.setFillColor(defaultColor);
 }
 
 ////////////////////////////////////////////////////////////
@@ -25,6 +27,7 @@ RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0), const sf::V
     this->button.setPosition(position);
     this->buttonPos = position;
     this->buttonRect = this->button.getLocalBounds();
+    this->button.setFillColor(defaultColor);
 }
 
 ////////////////////////////////////////////////////////////
@@ -36,6 +39,7 @@ RectButton::RectButton(const sf::Vector2f position = sf::Vector2f(0, 0), bool au
     this-> autoSize = autoSize;
     this->button.setPosition(position);
     this->buttonPos = position;
+    this->button.setFillColor(defaultColor);
 }
 
 ////////////////////////////////////////////////////////////
@@ -75,19 +79,20 @@ void RectButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
         //I am not sure if it is best to implement this inside a class
         if (isHover)
         {
-            button.setFillColor(defaultHovered);
+            button.setFillColor(bcs.hover);
         }
-        else button.setFillColor(sf::Color::White);
+        else button.setFillColor(bcs.color);
 
         if (isPressed)
         {
-            button.setFillColor(defaultPressed);
+            button.setFillColor(bcs.press);
         }
     }
     else
     {
-        button.setFillColor(defaultPressed);
+        button.setFillColor(bcs.press);
     }
+    
 }
 
 ////////////////////////////////////////////////////////////

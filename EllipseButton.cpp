@@ -1,4 +1,5 @@
-#include "sfml_button.hpp"
+#include "Button.hpp"
+#include "EllipseButton.hpp"
 
 ////////////////////////////////////////////////////////////
 ///
@@ -12,6 +13,7 @@ EllipseButton::EllipseButton(float radius = 0)
     std::cout<<"Button Contructor Called"<<std::endl;
     this->button.setRadius(radius);
     this->buttonRect = this->button.getLocalBounds();
+    this->button.setFillColor(defaultColor);
 }
 
 ////////////////////////////////////////////////////////////
@@ -25,6 +27,7 @@ EllipseButton::EllipseButton(float radius = 0, const sf::Vector2f position = sf:
     this->button.setPosition(position);
     this->buttonPos = position;
     this->buttonRect = this->button.getLocalBounds();
+    this->button.setFillColor(defaultColor);
 }
 
 ////////////////////////////////////////////////////////////
@@ -36,6 +39,7 @@ EllipseButton::EllipseButton(const sf::Vector2f position = sf::Vector2f(0, 0), b
     this-> autoSize = autoSize;
     this->button.setPosition(position);
     this->buttonPos = position;
+    this->button.setFillColor(defaultColor);
 }
 
 ////////////////////////////////////////////////////////////
@@ -74,18 +78,18 @@ void EllipseButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
         //I am not sure if it is best to implement this inside a class
         if (isHover)
         {
-            button.setFillColor(defaultHovered);
+            button.setFillColor(bcs.hover);
         }
-        else button.setFillColor(sf::Color::White);
+        else button.setFillColor(bcs.color);
 
         if (isPressed)
         {
-            button.setFillColor(defaultPressed);
+            button.setFillColor(bcs.press);
         }
     }
     else
     {
-        button.setFillColor(defaultPressed);
+        button.setFillColor(bcs.press);
     }
 }
 
@@ -110,7 +114,7 @@ void EllipseButton::setButtonLable(std::string label, const sf::Color& color, fl
     this->labelRect = this->buttonLabel.getLocalBounds();
 
     if(autoSize)
-    {   
+    {
         button.setRadius(labelRect.width / 1.5f);
 
         this->buttonRect = this->button.getLocalBounds();
@@ -129,6 +133,6 @@ void EllipseButton::setButtonLable(std::string label, const sf::Color& color, fl
         this->buttonLabel.setPosition(this->buttonPos.x + (this->buttonRect.width / 2.0f),
                                     this->buttonPos.y + (this->buttonRect.height / 3.0f));
     }
-    
+
 }
 

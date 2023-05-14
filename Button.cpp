@@ -21,13 +21,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 ////////////////////////////////////////////////////////////
-#ifndef SFML_BUTTON_HPP_INCLUDED
-#define SFML_BUTTON_HPP_INCLUDED
+
 ////////////////////////////////////////////////////////////
 // HEADERS
 ////////////////////////////////////////////////////////////
 #include "button.hpp"
-#include "RectButton.hpp"
-#include "EllipseButton.hpp"
 
-#endif // SFML_BUTTON_HPP_INCLUDED
+ButtonColorSet::ButtonColorSet()
+{
+    this->color = defaultColor;
+    this->hover = defaultHover;
+    this->press = defaultPress;
+}
+
+ButtonColorSet::ButtonColorSet(sf::Color color, sf::Color hover, sf::Color press)
+{
+    this->color = color;
+    this->hover = hover;
+    this->press = press;
+}
+
+void ButtonColorSet::setButtonColor(sf::Color color, sf::Color hover, sf::Color press)
+{
+    this->color = color;
+    this->hover = hover;
+    this->press = press;
+}
+
+void Button::setButtonFont(sf::Font& font)
+{
+    buttonLabel.setFont(font);
+}
+
+unsigned int Button::count = 0;

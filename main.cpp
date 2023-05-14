@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "sfml_button.hpp"
 
+
 sf::Font jackInput;
 
 int main()
@@ -19,6 +20,7 @@ int main()
     //button1.button.setTexture(&buttonTexture);
     button1.setButtonFont(jackInput);
     button1.setButtonLable("Exit",sf::Color::Black, 30);
+    button1.bcs.setButtonColor(sf::Color::Blue, sf::Color::Red, sf::Color::Green);
 
     RectButton button2(sf::Vector2f(100, 50), sf::Vector2f(50, 150));
     //button2.button.setTexture(&buttonTexture);
@@ -86,6 +88,7 @@ int main()
         }
 
         app.clear(sf::Color( 16, 8, 59, 255) );
+        
         button1.draw(app);
         button2.draw(app);
         button3.draw(app);
