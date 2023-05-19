@@ -27,40 +27,18 @@
 ////////////////////////////////////////////////////////////
 #include "button.hpp"
 
-<<<<<<< HEAD
 ColorSet::ColorSet()
-=======
-ButtonColorSet::ButtonColorSet()
->>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
 {
     this->color = defaultColor;
     this->hover = defaultHover;
     this->press = defaultPress;
 }
 
-<<<<<<< HEAD
-=======
-ButtonColorSet::ButtonColorSet(sf::Color color, sf::Color hover, sf::Color press)
-{
-    this->color = color;
-    this->hover = hover;
-    this->press = press;
-}
-
-void ButtonColorSet::setButtonColor(sf::Color color, sf::Color hover, sf::Color press)
-{
-    this->color = color;
-    this->hover = hover;
-    this->press = press;
-}
-
->>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
 void Button::setButtonFont(sf::Font& font)
 {
     buttonLabel.setFont(font);
 }
 
-<<<<<<< HEAD
 void Button::setButtonColor(sf::Color color, sf::Color hover, sf::Color press)
 {
     this->buttonColorSet.color = color;
@@ -68,6 +46,4 @@ void Button::setButtonColor(sf::Color color, sf::Color hover, sf::Color press)
     this->buttonColorSet.press = press;
 }
 
-=======
->>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
 unsigned int Button::count = 0;
