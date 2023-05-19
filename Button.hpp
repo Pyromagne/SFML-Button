@@ -33,14 +33,25 @@ const sf::Color defaultColor = sf::Color(255,255,255);
 const sf::Color defaultHover = sf::Color(191, 191, 191);
 const sf::Color defaultPress = sf::Color(153, 153, 153);
 
+<<<<<<< HEAD
 struct ColorSet
+=======
+struct ButtonColorSet
+>>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
 {
     public:
     sf::Color color;
     sf::Color hover;
     sf::Color press;
 
+<<<<<<< HEAD
     ColorSet();
+=======
+    ButtonColorSet();
+    ButtonColorSet(sf::Color, sf::Color, sf::Color);
+
+    void setButtonColor(sf::Color, sf::Color, sf::Color);
+>>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
 };
 
 
@@ -57,8 +68,13 @@ class Button
     virtual void draw(sf::RenderWindow&) = 0;
     virtual void setButtonFont(sf::Font&);
     virtual void setButtonLable(std::string, const sf::Color&, float) = 0;
+<<<<<<< HEAD
     void setButtonColor(sf::Color, sf::Color, sf::Color);
 
+=======
+
+    ButtonColorSet bcs;
+>>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
     bool isHover = false;
     bool isPressed = false;
     bool isActive = true;
@@ -72,7 +88,10 @@ class Button
     sf::Vector2f buttonPos;
     sf::FloatRect labelRect;
     std::string label;
+<<<<<<< HEAD
     ColorSet buttonColorSet;
+=======
+>>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
 };
 
 #endif // BUTTON_HPP_INCLUDED

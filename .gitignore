@@ -1,6 +1,14 @@
 .vscode/
 bin/
 obj/
+<<<<<<< HEAD
 *.cbp
 *.depend
 *.layout
+=======
+*.dll
+*.cbp
+*.depend
+*.layout
+
+>>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a

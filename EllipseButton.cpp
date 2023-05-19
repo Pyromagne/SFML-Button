@@ -78,6 +78,7 @@ void EllipseButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
         //I am not sure if it is best to implement this inside a class
         if (isHover)
         {
+<<<<<<< HEAD
             button.setFillColor(buttonColorSet.hover);
         }
         else button.setFillColor(buttonColorSet.color);
@@ -85,11 +86,24 @@ void EllipseButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
         if (isPressed)
         {
             button.setFillColor(buttonColorSet.press);
+=======
+            button.setFillColor(bcs.hover);
+        }
+        else button.setFillColor(bcs.color);
+
+        if (isPressed)
+        {
+            button.setFillColor(bcs.press);
+>>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
         }
     }
     else
     {
+<<<<<<< HEAD
         button.setFillColor(buttonColorSet.press);
+=======
+        button.setFillColor(bcs.press);
+>>>>>>> 1b2ed361805544cb7f949c2f695a9593c8654d9a
     }
 }
 
