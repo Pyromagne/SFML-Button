@@ -73,19 +73,19 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
+            button.getButtonStatus(window, event);
+
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            button.getButtonStatus(window, event);
-
             if (button.isPressed)
-            {
                 std::cout << "Button was pressed!" << std::endl;
-            }
         }
 
         window.clear(sf::Color::White);
+
         button.draw(window);
+
         window.display();
     }
 
