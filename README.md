@@ -13,7 +13,7 @@ The `Button` class is a pure virtual class that defines the interface for all bu
 - `getButtonStatus(sf::RenderWindow&, sf::Event&)`: gets the current status of the button (hovered, pressed, etc.) based on user interaction with the button.
 - `draw(sf::RenderWindow&)`: draws the button on a given window.
 - `setButtonFont(sf::Font&)`: sets the font of the button label.
-- `setButtonLable(std::string, const sf::Color&, float)`: sets the text, color, and size of the button label.
+- `setButtonLabel(const sf::Color&, float, std::string)`: sets the text, color, and size of the button label.
 
 The `Button` class also provides the following member variables:
 
@@ -65,7 +65,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Button Library");
 
     RectButton button(sf::Vector2f(150.f, 50.f), sf::Vector2f(325.f, 275.f));
-    button.setButtonLable("Click me!", sf::Color::Black, 24.f);
+    button.setButtonLabel(sf::Color::Black, 24.f, "Click me!");
     button.setButtonFont(buttonFont);
 
     while (window.isOpen())
@@ -73,19 +73,19 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
+            button.getButtonStatus(window, event);
+
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            button.getButtonStatus(window, event);
-
             if (button.isPressed)
-            {
                 std::cout << "Button was pressed!" << std::endl;
-            }
         }
 
         window.clear(sf::Color::White);
+
         button.draw(window);
+
         window.display();
     }
 

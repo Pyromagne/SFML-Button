@@ -41,14 +41,15 @@ class EllipseButton: public Button
 {
     public:
     EllipseButton(float radius);
-    EllipseButton(float radius, const sf::Vector2f);
-    EllipseButton(const sf::Vector2f, bool autoSize);
+    EllipseButton(sf::Font&, float radius, const sf::Vector2f);
+    EllipseButton(sf::Font&, const sf::Vector2f, bool autoSize);
 
     ~EllipseButton();
 
     void getButtonStatus(sf::RenderWindow&, sf::Event&);
     void draw(sf::RenderWindow&);
-    void setButtonLable(std::string, const sf::Color&, float);
+    void setButtonLabel(const sf::Color&, float, std::string label);
+    void setButtonLabel(const sf::Color&, float);
 
     sf::CircleShape button;
 

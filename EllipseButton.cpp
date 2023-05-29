@@ -18,7 +18,7 @@ EllipseButton::EllipseButton(float radius = 0)
 
 ////////////////////////////////////////////////////////////
 
-EllipseButton::EllipseButton(float radius = 0, const sf::Vector2f position = sf::Vector2f(0, 0))
+EllipseButton::EllipseButton(sf::Font& font, float radius = 0, const sf::Vector2f position = sf::Vector2f(0, 0))
 {
     //Constructor
     count++;
@@ -28,11 +28,14 @@ EllipseButton::EllipseButton(float radius = 0, const sf::Vector2f position = sf:
     this->buttonPos = position;
     this->buttonRect = this->button.getLocalBounds();
     this->button.setFillColor(defaultColor);
+    this->buttonLabel.setFont(font);
+    this->label = "Button "+ std::to_string(count);
+    this->setButtonLabel(sf::Color::Black, 25.f, label);
 }
 
 ////////////////////////////////////////////////////////////
 
-EllipseButton::EllipseButton(const sf::Vector2f position = sf::Vector2f(0, 0), bool autoSize = false)
+EllipseButton::EllipseButton(sf::Font& font, const sf::Vector2f position = sf::Vector2f(0, 0), bool autoSize = false)
 {   //Constructor
     count++;
     std::cout<<"Button Contructor Called"<<std::endl;
@@ -40,6 +43,9 @@ EllipseButton::EllipseButton(const sf::Vector2f position = sf::Vector2f(0, 0), b
     this->button.setPosition(position);
     this->buttonPos = position;
     this->button.setFillColor(defaultColor);
+    this->buttonLabel.setFont(font);
+    this->label = "Button "+ std::to_string(count);
+    this->setButtonLabel(sf::Color::Black, 25.f, label);
 }
 
 ////////////////////////////////////////////////////////////
@@ -98,12 +104,16 @@ void EllipseButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
 void EllipseButton::draw(sf::RenderWindow& window)
 {
     window.draw(button);
-    window.draw(buttonLabel);
+    
+    if (isLabelVisible)
+    {
+        window.draw(buttonLabel);
+    }
 }
 
 ////////////////////////////////////////////////////////////
 
-void EllipseButton::setButtonLable(std::string label, const sf::Color& color, float charSize)
+void EllipseButton::setButtonLabel(const sf::Color& color, float charSize, std::string label)
 {
     this->buttonLabel.setString(label);
     this->buttonLabel.setCharacterSize(charSize);
@@ -134,5 +144,12 @@ void EllipseButton::setButtonLable(std::string label, const sf::Color& color, fl
                                     this->buttonPos.y + (this->buttonRect.height / 3.0f));
     }
 
+}
+
+////////////////////////////////////////////////////////////
+
+void EllipseButton::setButtonLabel(const sf::Color& color, float charSize)
+{
+    setButtonLabel(color, charSize, this->label);
 }
 
