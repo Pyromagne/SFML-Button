@@ -53,12 +53,13 @@ struct ColorSet
 class Button
 {
     public:
-    virtual void getButtonStatus(sf::RenderWindow&, sf::Event&) = 0;
-    virtual void draw(sf::RenderWindow&) = 0;
-    virtual void setButtonFont(sf::Font&);
-    virtual void setButtonLabel(const sf::Color&, float, std::string) = 0;
-    virtual void setButtonLabel(const sf::Color&, float) = 0;
-    void setButtonColor(sf::Color, sf::Color, sf::Color);
+        virtual void getButtonStatus(sf::RenderWindow&, sf::Event&) = 0;
+        virtual void draw(sf::RenderWindow&) = 0;
+        virtual void setButtonFont(sf::Font&);
+        virtual void setButtonLabel(const sf::Color&, float, std::string) = 0;
+        virtual void setButtonLabel(const sf::Color&, float) = 0;
+        void setButtonColor(sf::Color, sf::Color, sf::Color);
+    //end of public
 
     bool isHover = false;
     bool isPressed = false;
