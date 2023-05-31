@@ -62,12 +62,12 @@ class Button
 {
     public:
 
-        virtual void getButtonStatus(sf::RenderWindow&, sf::Event&) = 0;
-        virtual void draw(sf::RenderWindow&) = 0;
-        virtual void setButtonFont(sf::Font&);
-        virtual void setButtonLabel(const sf::Color&, float, std::string) = 0;
-        virtual void setButtonLabel(const sf::Color&, float) = 0;
-        void setButtonColor(sf::Color, sf::Color, sf::Color);
+        virtual void getButtonStatus(sf::RenderWindow& window, sf::Event& event) = 0;
+        virtual void draw(sf::RenderWindow& window) = 0;
+        virtual void setButtonLabel(const sf::Color& color, float charsize, std::string label) = 0;
+        virtual void setButtonLabel(const sf::Color& color, float charsize) = 0;
+        virtual void setButtonFont(sf::Font& font);
+        void setButtonColor(sf::Color color, sf::Color hover, sf::Color press);
 
         bool isHover = false;
         bool isPressed = false;
