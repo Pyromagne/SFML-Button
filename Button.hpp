@@ -21,13 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 ////////////////////////////////////////////////////////////
+
 #ifndef BUTTON_HPP_INCLUDED
 #define BUTTON_HPP_INCLUDED
+
 ////////////////////////////////////////////////////////////
 // HEADERS
 ////////////////////////////////////////////////////////////
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
+
+////////////////////////////////////////////////////////////
 
 const sf::Color defaultColor = sf::Color(255,255,255);
 const sf::Color defaultHover = sf::Color(191, 191, 191);
@@ -36,11 +41,14 @@ const sf::Color defaultPress = sf::Color(153, 153, 153);
 struct ColorSet
 {
     public:
-    sf::Color color;
-    sf::Color hover;
-    sf::Color press;
 
-    ColorSet();
+        sf::Color color;
+        sf::Color hover;
+        sf::Color press;
+        
+        ColorSet();
+
+    //end of public
 };
 
 
@@ -53,29 +61,34 @@ struct ColorSet
 class Button
 {
     public:
+
         virtual void getButtonStatus(sf::RenderWindow&, sf::Event&) = 0;
         virtual void draw(sf::RenderWindow&) = 0;
         virtual void setButtonFont(sf::Font&);
         virtual void setButtonLabel(const sf::Color&, float, std::string) = 0;
         virtual void setButtonLabel(const sf::Color&, float) = 0;
         void setButtonColor(sf::Color, sf::Color, sf::Color);
+
+        bool isHover = false;
+        bool isPressed = false;
+        bool isActive = true;
+        bool isLabelVisible = true;
+        static unsigned int count;
+
     //end of public
 
-    bool isHover = false;
-    bool isPressed = false;
-    bool isActive = true;
-    bool isLabelVisible = true;
-    static unsigned int count;
-
     protected:
-    bool autoSize = false;
-    sf::Text buttonLabel;
-    sf::Vector2i mousePosWindow;
-    sf::Vector2f mousePosView;
-    sf::Vector2f buttonPos;
-    sf::FloatRect labelRect;
-    std::string label;
-    ColorSet buttonColorSet;
+
+        bool autoSize = false;
+        sf::Text buttonLabel;
+        sf::Vector2i mousePosWindow;
+        sf::Vector2f mousePosView;
+        sf::Vector2f buttonPos;
+        sf::FloatRect labelRect;
+        std::string label;
+        ColorSet buttonColorSet;
+
+    //end of protected
 };
 
 #endif // BUTTON_HPP_INCLUDED
