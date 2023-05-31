@@ -21,40 +21,47 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 ////////////////////////////////////////////////////////////
+
 #ifndef ELLIPSEBUTTON_HPP_INCLUDED
 #define ELLIPSEBUTTON_HPP_INCLUDED
+
 ////////////////////////////////////////////////////////////
 // HEADERS
 ////////////////////////////////////////////////////////////
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Button.hpp"
+
 ////////////////////////////////////////////////////////////
 ///
 /// @brief Make a Elliptical button
 ///
 ////////////////////////////////////////////////////////////
 
-
-
 class EllipseButton: public Button
 {
     public:
-    EllipseButton(float radius);
-    EllipseButton(sf::Font&, float radius, const sf::Vector2f);
-    EllipseButton(sf::Font&, const sf::Vector2f, bool autoSize);
 
-    ~EllipseButton();
+        EllipseButton(float radius);
+        EllipseButton(sf::Font&, float radius, const sf::Vector2f);
+        EllipseButton(sf::Font&, const sf::Vector2f, bool autoSize);
+        ~EllipseButton();
 
-    void getButtonStatus(sf::RenderWindow&, sf::Event&);
-    void draw(sf::RenderWindow&);
-    void setButtonLabel(const sf::Color&, float, std::string label);
-    void setButtonLabel(const sf::Color&, float);
+        void getButtonStatus(sf::RenderWindow&, sf::Event&);
+        void draw(sf::RenderWindow&);
+        void setButtonLabel(const sf::Color&, float, std::string label);
+        void setButtonLabel(const sf::Color&, float);
 
-    sf::CircleShape button;
+        sf::CircleShape button;
+
+    //end of public
 
     private:
-    sf::FloatRect buttonRect;
+
+        sf::FloatRect buttonRect;
+
+    //end of private
 };
 
 #endif // ELLIPSEBUTTON_HPP_INCLUDED

@@ -21,11 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 ////////////////////////////////////////////////////////////
+
 #ifndef SFMLBUTTON_HPP_INCLUDED
 #define SFMLBUTTON_HPP_INCLUDED
+
 ////////////////////////////////////////////////////////////
 // HEADERS
 ////////////////////////////////////////////////////////////
+
 #include "button.hpp"
 #include "RectButton.hpp"
 #include "EllipseButton.hpp"
