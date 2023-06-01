@@ -17,6 +17,7 @@ RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0))
     this->button.setFillColor(defaultColor);
     this->label = "Button "+ std::to_string(count);
     this->setButtonLabel(sf::Color::Black, 25.f, label);
+    //this->setLabelColor();
 }
 
 ////////////////////////////////////////////////////////////
@@ -71,6 +72,8 @@ void RectButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
 
     if (isActive)
     {
+        button.setFillColor(buttonColorSet.color);
+        buttonLabel.setFillColor(labelColorSet.color);
         if(button.getGlobalBounds().contains(this->mousePosView))
         {
             this->isHover = true;
@@ -88,17 +91,26 @@ void RectButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
         if (isHover)
         {
             button.setFillColor(buttonColorSet.hover);
+            buttonLabel.setFillColor(labelColorSet.hover);
         }
-        else button.setFillColor(buttonColorSet.color);
-
-        if (isPressed)
+        else 
         {
-            button.setFillColor(buttonColorSet.press);
+            button.setFillColor(buttonColorSet.color);
         }
+
+        if(button.getGlobalBounds().contains(this->mousePosView))
+        {
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                button.setFillColor(buttonColorSet.press);
+                buttonLabel.setFillColor(labelColorSet.press);
+            }
+        }
+
     }
     else
     {
-        button.setFillColor(buttonColorSet.press);
+        button.setFillColor(disabled);
     }
 
 }

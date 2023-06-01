@@ -37,6 +37,7 @@
 const sf::Color defaultColor = sf::Color(255,255,255);
 const sf::Color defaultHover = sf::Color(191, 191, 191);
 const sf::Color defaultPress = sf::Color(153, 153, 153);
+const sf::Color disabled = sf::Color(60,60,60);
 
 struct ColorSet
 {
@@ -47,8 +48,16 @@ struct ColorSet
         sf::Color press;
         
         ColorSet();
+        ColorSet(sf::Color color);
+        ColorSet(sf::Color color, sf::Color hover, sf::Color press);
 
     //end of public
+
+    private:
+
+        void init(sf::Color color, sf::Color hover, sf::Color press);
+
+    //end of private
 };
 
 
@@ -67,7 +76,10 @@ class Button
         virtual void setButtonLabel(const sf::Color& color, float charsize, std::string label) = 0;
         virtual void setButtonLabel(const sf::Color& color, float charsize) = 0;
         virtual void setButtonFont(sf::Font& font);
+        void setButtonColor(sf::Color color);
         void setButtonColor(sf::Color color, sf::Color hover, sf::Color press);
+        void setLabelColor(sf::Color color);
+        void setLabelColor(sf::Color color, sf::Color hover, sf::Color press);
 
         bool isHover = false;
         bool isPressed = false;
@@ -87,6 +99,7 @@ class Button
         sf::FloatRect labelRect;
         std::string label;
         ColorSet buttonColorSet;
+        ColorSet labelColorSet = ColorSet(sf::Color::Black) ;
 
     //end of protected
 };
