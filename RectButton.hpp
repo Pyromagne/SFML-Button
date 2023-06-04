@@ -42,16 +42,16 @@ class RectButton: public Button
 {
     public:
 
-        RectButton(const sf::Vector2f size);
+        RectButton(                const sf::Vector2f size, const sf::Vector2f position);
         RectButton(sf::Font& font, const sf::Vector2f size, const sf::Vector2f position);
-        RectButton(sf::Font& font, const sf::Vector2f position, bool autoSize);
+        RectButton(sf::Font& font, bool autoSize,           const sf::Vector2f position);
 
         ~RectButton();
 
         void getButtonStatus(sf::RenderWindow& window, sf::Event& event);
         void draw(sf::RenderWindow& window);
-        void setButtonLabel(const sf::Color& color, float charSize, std::string label);
-        void setButtonLabel(const sf::Color& color, float charSize);
+        void setButtonLabel(float charSize, std::string label);
+        void setButtonLabel(float charSize);
 
         sf::RectangleShape button;
 

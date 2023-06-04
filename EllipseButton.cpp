@@ -7,11 +7,14 @@
 ///
 ////////////////////////////////////////////////////////////
 
-EllipseButton::EllipseButton(float radius = 0)
-{   //Constructor
+EllipseButton::EllipseButton(float radius = 0,  const sf::Vector2f position = sf::Vector2f(0, 0))
+{
     count++;
     std::cout<<"Button Contructor Called"<<std::endl;
+
     this->button.setRadius(radius);
+    this->button.setPosition(position);
+    this->buttonPos = position;
     this->buttonRect = this->button.getLocalBounds();
     this->button.setFillColor(defaultColor);
 }
@@ -20,39 +23,45 @@ EllipseButton::EllipseButton(float radius = 0)
 
 EllipseButton::EllipseButton(sf::Font& font, float radius = 0, const sf::Vector2f position = sf::Vector2f(0, 0))
 {
-    //Constructor
     count++;
+
     std::cout<<"Button Contructor Called"<<std::endl;
+
     this->button.setRadius(radius);
     this->button.setPosition(position);
     this->buttonPos = position;
     this->buttonRect = this->button.getLocalBounds();
     this->button.setFillColor(defaultColor);
+
     this->buttonLabel.setFont(font);
     this->label = "Button "+ std::to_string(count);
-    this->setButtonLabel(sf::Color::Black, 25.f, label);
+    this->setButtonLabel(25.f, label);
 }
 
 ////////////////////////////////////////////////////////////
 
-EllipseButton::EllipseButton(sf::Font& font, const sf::Vector2f position = sf::Vector2f(0, 0), bool autoSize = false)
-{   //Constructor
+EllipseButton::EllipseButton(sf::Font& font, bool autoSize = false, const sf::Vector2f position = sf::Vector2f(0, 0))
+{
     count++;
+
     std::cout<<"Button Contructor Called"<<std::endl;
+
     this-> autoSize = autoSize;
     this->button.setPosition(position);
     this->buttonPos = position;
     this->button.setFillColor(defaultColor);
+    
     this->buttonLabel.setFont(font);
     this->label = "Button "+ std::to_string(count);
-    this->setButtonLabel(sf::Color::Black, 25.f, label);
+    this->setButtonLabel(25.f, label);
 }
 
 ////////////////////////////////////////////////////////////
 
 EllipseButton::~EllipseButton()
-{   //Deconstructor
+{
     count--;
+
     std::cout<<"Button Deconstructor Called"<<std::endl;
 }
 
@@ -123,11 +132,11 @@ void EllipseButton::draw(sf::RenderWindow& window)
 
 ////////////////////////////////////////////////////////////
 
-void EllipseButton::setButtonLabel(const sf::Color& color, float charSize, std::string label)
+void EllipseButton::setButtonLabel(float charSize, std::string label)
 {
     this->buttonLabel.setString(label);
     this->buttonLabel.setCharacterSize(charSize);
-    this->buttonLabel.setFillColor(color);
+    this->buttonLabel.setFillColor(labelColorSet.color);
     this->label = label;
 
 
@@ -158,8 +167,8 @@ void EllipseButton::setButtonLabel(const sf::Color& color, float charSize, std::
 
 ////////////////////////////////////////////////////////////
 
-void EllipseButton::setButtonLabel(const sf::Color& color, float charSize)
+void EllipseButton::setButtonLabel(float charSize)
 {
-    setButtonLabel(color, charSize, this->label);
+    setButtonLabel(charSize, this->label);
 }
 
