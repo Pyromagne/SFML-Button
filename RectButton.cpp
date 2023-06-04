@@ -8,54 +8,67 @@
 ////////////////////////////////////////////////////////////
 
 
-RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0))
-{   ///Constructor
+RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0), const sf::Vector2f position = sf::Vector2f(0, 0))
+{
     count++;
-    std::cout<<"Button Contructor Called"<<std::endl;
+
+    std::clog<<"Button Contructor Called"<<std::endl;
+    
     this->button.setSize(size);
+    this->button.setPosition(position);
+    this->buttonPos = position;
     this->buttonRect = this->button.getLocalBounds();
     this->button.setFillColor(defaultColor);
+
     this->label = "Button "+ std::to_string(count);
-    this->setButtonLabel(sf::Color::Black, 25.f, label);
+    this->setButtonLabel(25.f, label);
+    //this->setLabelColor();
 }
 
 ////////////////////////////////////////////////////////////
 
 RectButton::RectButton(sf::Font& font, const sf::Vector2f size = sf::Vector2f(0, 0), const sf::Vector2f position = sf::Vector2f(0, 0))
-{   //Constructor
+{
     count++;
-    std::cout<<"Button Contructor Called"<<std::endl;
+
+    std::clog<<"Button Contructor Called"<<std::endl;
+
     this->button.setSize(size);
     this->button.setPosition(position);
     this->buttonPos = position;
     this->buttonRect = this->button.getLocalBounds();
     this->button.setFillColor(defaultColor);
+
     this->buttonLabel.setFont(font);
     this->label = "Button "+ std::to_string(count);
-    this->setButtonLabel(sf::Color::Black, 25.f, label);
+    this->setButtonLabel(25.f, label);
 }
 
 ////////////////////////////////////////////////////////////
 
-RectButton::RectButton(sf::Font& font, const sf::Vector2f position = sf::Vector2f(0, 0), bool autoSize = false)
-{   //Constructor
+RectButton::RectButton(sf::Font& font, bool autoSize = false, const sf::Vector2f position = sf::Vector2f(0, 0))
+{
     count++;
-    std::cout<<"Button Contructor Called"<<std::endl;
+
+    std::clog<<"Button Contructor Called"<<std::endl;
+
     this-> autoSize = autoSize;
     this->button.setPosition(position);
     this->buttonPos = position;
+    this->buttonRect = this->button.getLocalBounds();
     this->button.setFillColor(defaultColor);
+
     this->buttonLabel.setFont(font);
     this->label = "Button "+ std::to_string(count);
-    this->setButtonLabel(sf::Color::Black, 25.f, label);
+    this->setButtonLabel(25.f, label);
 }
 
 ////////////////////////////////////////////////////////////
 
 RectButton::~RectButton()
-{   //Deconstructor
+{
     count--;
-    std::cout<<"Button Deconstructor Called"<<std::endl;
+    std::clog<<"Button Deconstructor Called"<<std::endl;
 
 }
 
@@ -71,6 +84,8 @@ void RectButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
 
     if (isActive)
     {
+        button.setFillColor(buttonColorSet.color);
+        buttonLabel.setFillColor(labelColorSet.color);
         if(button.getGlobalBounds().contains(this->mousePosView))
         {
             this->isHover = true;
@@ -88,17 +103,26 @@ void RectButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
         if (isHover)
         {
             button.setFillColor(buttonColorSet.hover);
+            buttonLabel.setFillColor(labelColorSet.hover);
         }
-        else button.setFillColor(buttonColorSet.color);
-
-        if (isPressed)
+        else 
         {
-            button.setFillColor(buttonColorSet.press);
+            button.setFillColor(buttonColorSet.color);
         }
+
+        if(button.getGlobalBounds().contains(this->mousePosView))
+        {
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                button.setFillColor(buttonColorSet.press);
+                buttonLabel.setFillColor(labelColorSet.press);
+            }
+        }
+
     }
     else
     {
-        button.setFillColor(buttonColorSet.press);
+        button.setFillColor(disabled);
     }
 
 }
@@ -118,11 +142,11 @@ void RectButton::draw(sf::RenderWindow& window)
 
 ////////////////////////////////////////////////////////////
 
-void RectButton::setButtonLabel(const sf::Color& color, float charSize, std::string label)
+void RectButton::setButtonLabel(float charSize, std::string label)
 {
     this->buttonLabel.setString(label);
     this->buttonLabel.setCharacterSize(charSize);
-    this->buttonLabel.setFillColor(color);
+    this->buttonLabel.setFillColor(labelColorSet.color);
     this->label = label;
 
     this->labelRect = this->buttonLabel.getLocalBounds();
@@ -152,7 +176,7 @@ void RectButton::setButtonLabel(const sf::Color& color, float charSize, std::str
 
 ////////////////////////////////////////////////////////////
 
-void RectButton::setButtonLabel(const sf::Color& color, float charSize)
+void RectButton::setButtonLabel(float charSize)
 {
-    setButtonLabel(color,charSize, this->label);
+    setButtonLabel(charSize, this->label);
 }

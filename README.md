@@ -3,6 +3,7 @@
 The SFML Button Library is a C++ library built using the SFML Graphics Library. It is designed to help developers create interactive and customizable button elements for their SFML-based projects. The library provides two button classes: RectButton and EllipseButton.
 
 ## API Documentation
+### (Documentation is outdated it will be updated soon)
 
 The library provides a `Button` base class and a `RectButton` derived class:
 
