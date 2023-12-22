@@ -10,8 +10,6 @@
 EllipseButton::EllipseButton(float radius = 0,  const sf::Vector2f position = sf::Vector2f(0, 0))
 {
     count++;
-    std::cout<<"Button Contructor Called"<<std::endl;
-
     this->button.setRadius(radius);
     this->button.setPosition(position);
     this->buttonPos = position;
@@ -24,9 +22,6 @@ EllipseButton::EllipseButton(float radius = 0,  const sf::Vector2f position = sf
 EllipseButton::EllipseButton(sf::Font& font, float radius = 0, const sf::Vector2f position = sf::Vector2f(0, 0))
 {
     count++;
-
-    std::cout<<"Button Contructor Called"<<std::endl;
-
     this->button.setRadius(radius);
     this->button.setPosition(position);
     this->buttonPos = position;
@@ -43,14 +38,11 @@ EllipseButton::EllipseButton(sf::Font& font, float radius = 0, const sf::Vector2
 EllipseButton::EllipseButton(sf::Font& font, bool autoSize = false, const sf::Vector2f position = sf::Vector2f(0, 0))
 {
     count++;
-
-    std::cout<<"Button Contructor Called"<<std::endl;
-
     this-> autoSize = autoSize;
     this->button.setPosition(position);
     this->buttonPos = position;
     this->button.setFillColor(defaultColor);
-    
+
     this->buttonLabel.setFont(font);
     this->label = "Button "+ std::to_string(count);
     this->setButtonLabel(25.f, label);
@@ -61,8 +53,6 @@ EllipseButton::EllipseButton(sf::Font& font, bool autoSize = false, const sf::Ve
 EllipseButton::~EllipseButton()
 {
     count--;
-
-    std::cout<<"Button Deconstructor Called"<<std::endl;
 }
 
 ////////////////////////////////////////////////////////////
@@ -98,7 +88,7 @@ void EllipseButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
             button.setFillColor(buttonColorSet.hover);
             buttonLabel.setFillColor(labelColorSet.hover);
         }
-        else 
+        else
         {
             button.setFillColor(buttonColorSet.color);
         }
@@ -123,7 +113,7 @@ void EllipseButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
 void EllipseButton::draw(sf::RenderWindow& window)
 {
     window.draw(button);
-    
+
     if (isLabelVisible)
     {
         window.draw(buttonLabel);

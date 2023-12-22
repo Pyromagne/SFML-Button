@@ -11,9 +11,6 @@
 RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0), const sf::Vector2f position = sf::Vector2f(0, 0))
 {
     count++;
-
-    std::clog<<"Button Contructor Called"<<std::endl;
-    
     this->button.setSize(size);
     this->button.setPosition(position);
     this->buttonPos = position;
@@ -30,9 +27,6 @@ RectButton::RectButton(const sf::Vector2f size = sf::Vector2f(0, 0), const sf::V
 RectButton::RectButton(sf::Font& font, const sf::Vector2f size = sf::Vector2f(0, 0), const sf::Vector2f position = sf::Vector2f(0, 0))
 {
     count++;
-
-    std::clog<<"Button Contructor Called"<<std::endl;
-
     this->button.setSize(size);
     this->button.setPosition(position);
     this->buttonPos = position;
@@ -49,9 +43,6 @@ RectButton::RectButton(sf::Font& font, const sf::Vector2f size = sf::Vector2f(0,
 RectButton::RectButton(sf::Font& font, bool autoSize = false, const sf::Vector2f position = sf::Vector2f(0, 0))
 {
     count++;
-
-    std::clog<<"Button Contructor Called"<<std::endl;
-
     this-> autoSize = autoSize;
     this->button.setPosition(position);
     this->buttonPos = position;
@@ -68,8 +59,6 @@ RectButton::RectButton(sf::Font& font, bool autoSize = false, const sf::Vector2f
 RectButton::~RectButton()
 {
     count--;
-    std::clog<<"Button Deconstructor Called"<<std::endl;
-
 }
 
 ////////////////////////////////////////////////////////////
@@ -105,7 +94,7 @@ void RectButton::getButtonStatus(sf::RenderWindow& window, sf::Event& event)
             button.setFillColor(buttonColorSet.hover);
             buttonLabel.setFillColor(labelColorSet.hover);
         }
-        else 
+        else
         {
             button.setFillColor(buttonColorSet.color);
         }
@@ -152,8 +141,8 @@ void RectButton::setButtonLabel(float charSize, std::string label)
     this->labelRect = this->buttonLabel.getLocalBounds();
 
     if(autoSize)
-    {
-        sf::Vector2f autoRectSize = sf::Vector2f(labelRect.width + (2.5f * (labelRect.width/10)),
+    {   /* Temporary Fix */
+        sf::Vector2f autoRectSize = sf::Vector2f(labelRect.width/* + (2.5f * (labelRect.width/10))*/,
                                                  labelRect.height + (10.f * (labelRect.height/10)));
         this->button.setSize(autoRectSize);
         this->buttonRect = this->button.getLocalBounds();
