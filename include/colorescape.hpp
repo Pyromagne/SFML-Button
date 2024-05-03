@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 // MIT License
 //
-// Copyright (c) 2023 Pyromagne
+// Copyright (c) 2024 Pyromagne
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,62 +23,42 @@
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
-// HEADERS
+#ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+    #define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
+    #define RESET_COLOR "\x1B[0m"
+#endif
 ////////////////////////////////////////////////////////////
-#include "button.hpp"
 
-ColorSet::ColorSet()
-{
-    this->color = defaultColor;
-    this->hover = defaultHover;
-    this->press = defaultPress;
-}
+////////////////////////////////////////////////////////////
+#ifndef COLORESCAPE_HPP
+    #define COLORESCAPE_HPP
 
-ColorSet::ColorSet(sf::Color color)
-{
-    init(color, color, color);
-}
+    #include <iostream>
+    #include <string>
+    #include <windows.h>
 
-ColorSet::ColorSet(sf::Color color, sf::Color hover, sf::Color press)
-{
-    init(color, hover, press);
-}
+    void enable_vtp(void);
 
-void ColorSet::init(sf::Color color, sf::Color hover, sf::Color press)
-{
-    this->color = color;
-    this->hover = hover;
-    this->press = press;
-}
+    namespace ce
+    {
+        enum Color
+        {
+            Red = 160,
+            Orange = 208,
+            Yellow = 220,
+            Green = 28,
+            Blue = 27,
+            Purple = 127,
+            White = 255,
+            Black = 0,
+        };
 
-void Button::setButtonFont(sf::Font& font)
-{
-    buttonLabel.setFont(font);
-}
+        void setForegroundColor(int);
+        void setBackgroundColor(int);
+        void reset(void);
+        std::string colorIn(int, std::string);
+        std::string colorIn2(int, int, std::string);
+    }
+#endif
+////////////////////////////////////////////////////////////
 
-void Button::setButtonColor(sf::Color color)
-{
-    setButtonColor(color,color,color);
-}
-
-void Button::setButtonColor(sf::Color color, sf::Color hover, sf::Color press)
-{
-    this->buttonColorSet.color = color;
-    this->buttonColorSet.hover = hover;
-    this->buttonColorSet.press = press;
-}
-
-void Button::setLabelColor(sf::Color color)
-{
-    setLabelColor(color,color,color);
-}
-
-
-void Button::setLabelColor(sf::Color color, sf::Color hover, sf::Color press)
-{
-    this->labelColorSet.color = color;
-    this->labelColorSet.hover = hover;
-    this->labelColorSet.press = press;
-}
-
-unsigned int Button::count = 0;

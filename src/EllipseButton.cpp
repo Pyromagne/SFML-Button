@@ -1,5 +1,5 @@
-#include "Button.hpp"
-#include "EllipseButton.hpp"
+#include "../include/Button.hpp"
+#include "../include/EllipseButton.hpp"
 
 ////////////////////////////////////////////////////////////
 ///
